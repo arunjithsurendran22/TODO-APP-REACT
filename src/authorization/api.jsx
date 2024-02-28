@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://todo-app-react-server.vercel.app/api/v2/todo"
+  baseURL: "https://boisterous-chebakia-364313.netlify.app/api/v2/todo"
 });
 //http://localhost:3000/api/v2/todo
 //https://todo-app-react-server.vercel.app/
