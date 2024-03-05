@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import  { useState, useEffect, useRef } from "react";
 import api from "../authorization/api";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 

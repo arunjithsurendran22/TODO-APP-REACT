@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://long-pink-termite-tie.cyclic.app/api/v2/todo"
+  baseURL: "https://todo-app-react-server.vercel.app/api/v2/todo"
 });
+// "https://long-pink-termite-tie.cyclic.app/api/v2/todo"
 //http://localhost:3000/api/v2/todo
 //https://todo-app-react-server.vercel.app/
 // Request interceptor for adding the bearer token
