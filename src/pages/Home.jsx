@@ -1,10 +1,10 @@
 import  { useState, useEffect, useRef } from "react";
 import api from "../authorization/api";
-// import { MdModeEdit, MdDelete } from "react-icons/md";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 
 const Home = () => {
   const [todos, setTodos] = useState([]);
-  // const [newTodo, setNewTodo] = useState("");
+  const [newTodo, setNewTodo] = useState("");
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -20,66 +20,65 @@ const Home = () => {
     inputRef.current.focus();
   }, [todos]);
 
-  // const addTodo = async () => {
-  //   try {
-  //     const response = await api.post("/create", { title: newTodo });
-  //     setTodos([...todos, response.data]);
-  //     setNewTodo("");
-  //   } catch (error) {
-  //     console.error("Error adding todo:", error);
-  //   }
-  // };
+  const addTodo = async () => {
+    try {
+      const response = await api.post("/create", { title: newTodo });
+      setTodos([...todos, response.data]);
+      setNewTodo("");
+    } catch (error) {
+      console.error("Error adding todo:", error);
+    }
+  };
 
-  // const deleteTodo = async (id) => {
-  //   try {
-  //     await api.delete(`/delete/${id}`);
-  //     setTodos(todos.filter((todo) => todo._id.toString() !== id.toString()));
-  //   } catch (error) {
-  //     console.error("Error deleting todo:", error);
-  //   }
-  // };
+  const deleteTodo = async (id) => {
+    try {
+      await api.delete(`/delete/${id}`);
+      setTodos(todos.filter((todo) => todo._id.toString() !== id.toString()));
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+    }
+  };
 
-  // const toggleComplete = async (id) => {
-  //   try {
-  //     const response = await api.put(`/complete/${id}`, {
-  //       completed: !todos.find((todo) => todo._id === id).completed,
-  //     });
-  //     setTodos(todos.map((todo) => (todo._id === id ? response.data : todo)));
-  //   } catch (error) {
-  //     console.error("Error updating todo:", error);
-  //   }
-  // };
+  const toggleComplete = async (id) => {
+    try {
+      const response = await api.put(`/complete/${id}`, {
+        completed: !todos.find((todo) => todo._id === id).completed,
+      });
+      setTodos(todos.map((todo) => (todo._id === id ? response.data : todo)));
+    } catch (error) {
+      console.error("Error updating todo:", error);
+    }
+  };
 
-  // const editTodo = async (id, newTitle) => {
-  //   try {
-  //     await api.put(`/edit/${id}`, { title: newTitle });
-  //     setTodos(
-  //       todos.map((todo) =>
-  //         todo._id === id ? { ...todo, title: newTitle } : todo
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error("Error updating todo:", error);
-  //   }
-  // };
+  const editTodo = async (id, newTitle) => {
+    try {
+      await api.put(`/edit/${id}`, { title: newTitle });
+      setTodos(
+        todos.map((todo) =>
+          todo._id === id ? { ...todo, title: newTitle } : todo
+        )
+      );
+    } catch (error) {
+      console.error("Error updating todo:", error);
+    }
+  };
 
-  // const handleEdit = (id, currentTitle) => {
-  //   const newTitle = prompt("Enter the new title:", currentTitle);
-  //   if (newTitle !== null) {
-  //     editTodo(id, newTitle);
-  //   }
-  // };
-  // const handleKeyPress = (event) => {
-  //   if (event.key === "Enter") {
-  //     addTodo();
-  //   }
-  // };
+  const handleEdit = (id, currentTitle) => {
+    const newTitle = prompt("Enter the new title:", currentTitle);
+    if (newTitle !== null) {
+      editTodo(id, newTitle);
+    }
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      addTodo();
+    }
+  };
   
 
   return (
     <div className="flex py-20 justify-center min-h-screen bg-gray-100">
-      <h1>Hello</h1>
-      {/* <div className="w-full max-w-xl">
+      <div className="w-full max-w-xl">
         <div className="bg-white shadow-md rounded px-8 py-8 mb-4 flex items-center justify-between">
           <input
             ref={inputRef}
@@ -137,7 +136,7 @@ const Home = () => {
             </li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 };
