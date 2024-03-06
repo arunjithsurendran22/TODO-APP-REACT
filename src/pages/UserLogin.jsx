@@ -103,7 +103,7 @@ function UserLogin() {
             LOGIN
           </button>
         </form>
-        {/* <span className="my-5 italic">Don't have an Account ?</span> */}
+        <span className="my-5 italic">Don't have an Account ?</span>
 
         <Link to="/register">
           <span className="text-blue-600 mx-5 font-bold">Register</span>
