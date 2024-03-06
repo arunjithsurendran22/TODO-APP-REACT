@@ -13,7 +13,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/test" element={<Home />} />
           <Route path="/register" element={<UserRegister />} />
           <Route path="/" element={<UserLogin />} />
         </Routes>
