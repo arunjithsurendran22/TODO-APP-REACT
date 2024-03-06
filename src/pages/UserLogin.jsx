@@ -48,7 +48,6 @@ function UserLogin() {
           toast.success("Login Successfully");
           handleLoginToken(response.data);
           navigate("/home");
-          window.location.reload();
         } else {
           toast.error(response.data.message);
           setFormData({ ...formData, password: "" }); // Clear password field on error
