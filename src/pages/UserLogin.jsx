@@ -108,6 +108,9 @@ function UserLogin() {
         <Link to="/register">
           <span className="text-blue-600 mx-5 font-bold">Register</span>
         </Link>
+          <Link to="/home">
+          <span className="text-blue-600 mx-5 font-bold">Home</span>
+        </Link>
       </div>
       <Link to="/forgot-password">
         <span className="italic text-red-700">Forgot password</span>
