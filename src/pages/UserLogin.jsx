@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Router, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../authorization/api";
 
@@ -47,7 +47,7 @@ function UserLogin() {
         if (response.data.message === "User Login successful") {
           toast.success("Login Successfully");
           handleLoginToken(response.data);
-          navigate("/home");
+          window.location.replace("https://todo-app-react-blond.vercel.app/home")
         } else {
           toast.error(response.data.message);
           setFormData({ ...formData, password: "" }); // Clear password field on error
