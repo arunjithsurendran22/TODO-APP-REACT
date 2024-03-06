@@ -1,10 +1,10 @@
 import  { useState, useEffect, useRef } from "react";
 import api from "../authorization/api";
-import { MdModeEdit, MdDelete } from "react-icons/md";
+// import { MdModeEdit, MdDelete } from "react-icons/md";
 
 const Home = () => {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState("");
+  // const [newTodo, setNewTodo] = useState("");
   const inputRef = useRef(null);
 
   useEffect(() => {
