@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import api from "../authorization/api";
+import {toast} from "react-toastify"
 
 function UserRegister() {
   const inputFocus = useRef();
@@ -50,12 +51,25 @@ function UserRegister() {
     e.preventDefault();
     if (validateForm()) {
       try {
-        console.log(formData);
         const response = await api.post("/register", formData);
         console.log("Registration successful:", response.data);
-        navigate("/");
+        if (response.data.message === "user registered successfully") {
+          toast.success("User registered successfully");
+          navigate("/");
+        } else {
+          toast.error(response.data.message);
+        }
       } catch (error) {
-        console.log("Register failed", error.response.data);
+        // Handle backend validation errors
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          toast.error(error.response.data.message);
+        } else {
+          console.log("Register failed", error);
+        }
       }
     }
   };
